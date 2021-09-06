@@ -24,7 +24,7 @@ The Derive class takes in 3 arguments.
 d = derivehelper.Derive(password, salt, derivehelper.KDF.BCRYPT)
 '''
 To actually derive the key, call the derive() method.
-The Bcrypt KDF by default, generates a key of which is 32 bytes long, and 100 rounds. This can be changed 
+The Bcrypt KDF by default, generates a key of which is 32 bytes long, and 100 rounds. The byte value can be changed 
 by passing in an integer for the first parameter. You can also get a base64 encoded version by passing in encode=True
 '''
 print(d.derive()) # b'H\x15\xbb\xb7\xcaQ\xee\xa1\xfe-\xa51\xca\x8d\x12\xfe5\xd2h!\xd9\xeaV\xc6\xfbp3L\x98(`\x97'
