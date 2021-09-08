@@ -1,9 +1,18 @@
-from nacl import pwhash
-from cryptography.hazmat.primitives import hashes
-from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
-from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC as pbkdf2
+try:
+    from nacl import pwhash
+except ImportError:
+    raise ImportError("This package requires 'pynacl' to be installed.\n'pip install pynacl'")
+try:
+    from cryptography.hazmat.primitives import hashes
+    from cryptography.hazmat.primitives.kdf.scrypt import Scrypt
+    from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC as pbkdf2
+except ImportError:
+    raise ImportError("This package requires 'cryptography' to be installed.\n'pip install cryptography'")
+try:
+    import bcrypt
+except ImportError:
+    raise ImportError("This package requires 'bcrypt' to be installed.\n'pip install bcrypt'")
 from enum import Enum, auto
-import bcrypt
 import hashlib
 import base64
 import secrets
@@ -17,14 +26,6 @@ class KDF(Enum):
     BCRYPT = auto()
     PBKDF2HMAC = auto()
     SCRYPT = auto()
-
-class exceptions:
-    class NotDerivedError(Exception):
-        def __init__(self, message='Key has not been derived.'):
-            self.message = message
-            super().__init__(self.message)
-
-e = exceptions()
 
 def create_pw(password_length: int = 16):
     if type(password_length) != int:
