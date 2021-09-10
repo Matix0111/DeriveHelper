@@ -7,8 +7,7 @@ PBKDF2HMAC
 Argon2I
 Argon2ID
 
-# Usage
-
+# Derive Usage
 ```python
 import derivehelper
 
@@ -57,6 +56,30 @@ By default it is 150,000. But can be overridden.
 d = derivehelper.Derive(password, salt, derivehelper.KDF.PBKDF2HMAC)
 # Using 250,000 iterations.
 d.derive(extra_args=(250000,)) # b'\xcd\x15\xd6~\xceC\xa2r\xcf\x93KCS;E\x13\xac\x9b\x7f\xdf\xe7Tt\x89H\x0c\x84\xe4\xc1\xdau\x94'
+```
+# Hash Usage
+* CUSTOM using() FUNCTIONALITY COMING SOON!
+Supported hashing functions: Argon2ID, Bcrypt, Bcrypt_SHA256, PBKDF2-SHA1, PBKDF2-SHA256, PBKDF2-SHA512, SHA256-crypt, SHA512-crypt, Scrypt
+```python
+import derivehelper
+
+password = derivehelper.create_pw(32) # Create 32 char password
+
+'''
+To utilize the hashing functions of derivehelper, instantiate the Hash class.
+The Hash class takes in 1 parameter, the password (labeled "secret").
+'''
+h = derivehelper.Hash(password)
+
+# To get the hash value, call the method of which corresponds to the hash you want.
+# For argon2id
+print(h.argon2id()) # $argon2id$v=19$m=102400,t=2,p=8$P0foXQuB8D4npDRGqLW21g$vGpZF/z9erC3sVFcZls2Gw
+# For bcrypt
+print(h.bcrypt()) # $2b$12$oov7QnFVNxKSi/6AgxsfMudfX3NaC.sqmVMqEHozDd2.hgTJrMslO
+# For PBKDF2-SHA256
+print(h.pbkdf2_sha256()) # $pbkdf2-sha256$29000$x3hPScm5915LqTVm7J0Tgg$P9/FNmie9ONydtCzcII9BPA/7XD5NHqnixvP9NFWoVQ
+# For SHA256-crypt
+print(h.sha256_crypt()) # $5$rounds=535000$vOEY9PcYv.fTIgAB$/NOB/DAqAvo/SQe6ckxVOJOqWahlosBItvuQAItVVf.
 ```
 
 # Important Notes
