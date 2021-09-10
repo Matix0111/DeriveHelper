@@ -7,8 +7,7 @@ PBKDF2HMAC
 Argon2I
 Argon2ID
 
-# Usage
-
+# Derive Usage
 ```python
 import derivehelper
 
@@ -57,6 +56,26 @@ By default it is 150,000. But can be overridden.
 d = derivehelper.Derive(password, salt, derivehelper.KDF.PBKDF2HMAC)
 # Using 250,000 iterations.
 d.derive(extra_args=(250000,)) # b'\xcd\x15\xd6~\xceC\xa2r\xcf\x93KCS;E\x13\xac\x9b\x7f\xdf\xe7Tt\x89H\x0c\x84\xe4\xc1\xdau\x94'
+```
+# Hash Usage
+```python
+import derivehelper
+
+password = derivehelper.create_pw(32) # Create 32 char password
+
+'''
+To utilize the hashing functions of derivehelper, instantiate the Hash class.
+The Hash class takes in 1 parameter, the password (labeled "secret").
+'''
+h = derivehelper.Hash(password)
+
+# To get the hash value, call the method of which corresponds to the hash you want.
+# For argon2id
+print(h.argon2id())
+# For bcrypt
+print(h.bcrypt())
+# For PBKDF2-SHA256
+print(h.pbkdf2_sha256())
 ```
 
 # Important Notes
