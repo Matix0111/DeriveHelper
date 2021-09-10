@@ -59,13 +59,16 @@ class Hash:
         return self.secret
     
     def argon2id(self):
-        return argon2.hash(self.secret, type='ID')
+        c_a = argon2.using(type='ID')
+        return c_a.hash(self.secret)
     
     def argon2i(self):
-        return argon2.hash(self.secret, type='I')
+        c_a = argon2.using(type='I')
+        return c_a.hash(self.secret)
     
     def argon2d(self):
-        return argon2.hash(self.secret, type='D')
+        c_a = argon2.using(type='D')
+        return c_a.hash(self.secret)
 
     def bcrypt(self):
         return bc.hash(self.secret)
