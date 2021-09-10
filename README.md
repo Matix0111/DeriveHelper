@@ -58,6 +58,7 @@ d = derivehelper.Derive(password, salt, derivehelper.KDF.PBKDF2HMAC)
 d.derive(extra_args=(250000,)) # b'\xcd\x15\xd6~\xceC\xa2r\xcf\x93KCS;E\x13\xac\x9b\x7f\xdf\xe7Tt\x89H\x0c\x84\xe4\xc1\xdau\x94'
 ```
 # Hash Usage
+* CUSTOM using() FUNCTIONALITY COMING SOON!
 ```python
 import derivehelper
 
@@ -71,11 +72,13 @@ h = derivehelper.Hash(password)
 
 # To get the hash value, call the method of which corresponds to the hash you want.
 # For argon2id
-print(h.argon2id())
+print(h.argon2id()) # $argon2id$v=19$m=102400,t=2,p=8$P0foXQuB8D4npDRGqLW21g$vGpZF/z9erC3sVFcZls2Gw
 # For bcrypt
-print(h.bcrypt())
+print(h.bcrypt()) # $2b$12$oov7QnFVNxKSi/6AgxsfMudfX3NaC.sqmVMqEHozDd2.hgTJrMslO
 # For PBKDF2-SHA256
-print(h.pbkdf2_sha256())
+print(h.pbkdf2_sha256()) # $pbkdf2-sha256$29000$x3hPScm5915LqTVm7J0Tgg$P9/FNmie9ONydtCzcII9BPA/7XD5NHqnixvP9NFWoVQ
+# For SHA256-crypt
+print(h.sha256_crypt()) # $5$rounds=535000$vOEY9PcYv.fTIgAB$/NOB/DAqAvo/SQe6ckxVOJOqWahlosBItvuQAItVVf.
 ```
 
 # Important Notes
