@@ -55,6 +55,9 @@ class Hash:
     def __init__(self, secret):
         self.secret = secret
     
+    def get_secret(self):
+        return self.secret
+    
     def argon2id(self):
         return argon2.hash(self.secret)
     
