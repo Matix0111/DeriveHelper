@@ -59,7 +59,7 @@ d.derive(extra_args=(250000,)) # b'\xcd\x15\xd6~\xceC\xa2r\xcf\x93KCS;E\x13\xac\
 ```
 # Hash Usage
 * CUSTOM using() FUNCTIONALITY COMING SOON!
-Supported hashing functions: Argon2ID, Bcrypt, Bcrypt_SHA256, PBKDF2-SHA1, PBKDF2-SHA256, PBKDF2-SHA512, SHA256-crypt, SHA512-crypt, Scrypt
+* Supported hashing functions: Argon2ID, Argon2I, Argon2D, Bcrypt, Bcrypt_SHA256, PBKDF2-SHA1, PBKDF2-SHA256, PBKDF2-SHA512, SHA256-crypt, SHA512-crypt, Scrypt.
 ```python
 import derivehelper
 
