@@ -136,7 +136,7 @@ class KDF:
         return key
 
 def main():
-    hashes_to_test = [x for x in dir(Hash) if not x.startswith('__')]
+    hashes_to_test = [x for x in dir(Hash) if not x.startswith('__') and not x.startswith('get')]
     print(f'-----Testing {len(hashes_to_test)} Hashes-----\n')
     hash_pw = create_pw(64)
     h = Hash(hash_pw)
