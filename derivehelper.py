@@ -30,7 +30,7 @@ import base64
 import secrets
 import string
 
-PW_DATASET = string.ascii_letters + string.digits
+PW_DATASET = string.ascii_letters + string.digits + '!#$%&*.'
 
 class KDF_OPTIONS(Enum):
     ARGON2ID = auto()
